@@ -33,7 +33,7 @@
                       <q-icon
                         :class="{
                           addbtn: isFormLogin,
-                          registerbtn: !isFormLogin,
+                          registerbtn: !isFormLogin
                         }"
                         :name="isFormLogin ? 'add' : 'close'"
                       />

@@ -12,10 +12,14 @@ export async function loginOrRegister(context, resource) {
       auth.loginOrRegister(resource)
         .then((response) => {
           console.log('loginOrRegister, (Actions, Then) :', response);
-          this.$router.push({ name: 'home' });
+          context.dispatch('notify/notifyMe', response, { root: true });
+          if (resource.url === '/login') {
+            this.$router.push({ name: 'home' });
+          }
         })
         .catch((error) => {
           if (error.response.status === 422) {
+            context.dispatch('notify/notifyMe', error.response, { root: true });
             context.commit('setFormErrors', error.response.data.errors);
             console.log('loginOrRegister, (Actions, Catch) :', error.response);
           }

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 // import example from './module-example'
 import auth from './module-auth';
+import notify from './module-notify';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
     modules: {
       // example,
       auth,
+      notify,
     },
 
     // enable strict mode (adds overhead!)
