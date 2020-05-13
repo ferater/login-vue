@@ -13,15 +13,13 @@ export async function loginOrRegister(context, resource) {
         .then((response) => {
           console.log('loginOrRegister, (Actions, Then) :', response);
           context.dispatch('notify/notifyMe', response, { root: true });
-          if (resource.url === '/login') {
-            this.$router.push({ name: 'home' });
-          }
+          this.$router.push({ name: 'home' });
         })
         .catch((error) => {
           if (error.response.status === 422) {
-            context.dispatch('notify/notifyMe', error.response, { root: true });
-            context.commit('setFormErrors', error.response.data.errors);
-            console.log('loginOrRegister, (Actions, Catch) :', error.response);
+            // context.dispatch('notify/notifyMe', error.response, { root: true });
+            // context.dispatch('setFormErrors', error.response.data.errors);
+            // console.log('loginOrRegister, (Actions, Catch) :', error.response);
           }
         });
     })
@@ -30,4 +28,13 @@ export async function loginOrRegister(context, resource) {
         console.info('getCookie, (Actions, Catch) : Network Hatası!');
       }
     });
+}
+
+/**
+ * Sunucudan dönen hataları forma yazdırır
+ * @param {Object} context
+ * @param {Array} errors
+ */
+export function setFormErrors(context, errors) {
+  context.commit('setFormErrors', errors);
 }

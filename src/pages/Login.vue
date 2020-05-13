@@ -33,7 +33,7 @@
                       <q-icon
                         :class="{
                           addbtn: isFormLogin,
-                          registerbtn: !isFormLogin
+                          registerbtn: !isFormLogin,
                         }"
                         :name="isFormLogin ? 'add' : 'close'"
                       />
@@ -56,7 +56,9 @@
                     :type="field.type"
                     :label="field.label"
                     :error="
-                      Object.entries(formErrors).length > 0 ? true : false
+                      Object.entries(formErrors).length > 0 &&
+                      formData[field.name] == null
+                       ? true : false
                     "
                     :error-message="
                       Object.entries(formErrors).length > 0

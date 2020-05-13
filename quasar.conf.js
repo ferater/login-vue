@@ -19,6 +19,7 @@ module.exports = function (/* ctx */) {
       'i18n',
       'axios',
       'filters',
+      'interceptor',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -74,7 +75,7 @@ module.exports = function (/* ctx */) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       env: {
-        BASE_URL: JSON.stringify('http://automation.test'),
+        BASE_URL: JSON.stringify('http://automation.test/api'),
       },
 
       // rtl: false, // https://quasar.dev/options/rtl-support

@@ -15,7 +15,7 @@ export default {
     }
     return axios({
       method: 'get',
-      url: '/api/sanctum/csrf-cookie',
+      url: '/sanctum/csrf-cookie',
     }).then(() => {
       console.log('getCookie, (Actions, Then) : Csrf Çerez alındı');
     });
