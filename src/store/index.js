@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 // import example from './module-example'
 import auth from './module-auth';
 import notify from './module-notify';
+import validation from './module-validation';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ export default function (/* { ssrContext } */) {
       // example,
       auth,
       notify,
+      validation,
     },
 
     // enable strict mode (adds overhead!)

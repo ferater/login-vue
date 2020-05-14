@@ -8,4 +8,16 @@ export default {
       data: resource.data,
     });
   },
+  getAuthUser() {
+    return axios({
+      method: 'get',
+      url: '/user',
+    });
+  },
+  logOut() {
+    return axios({
+      method: 'post',
+      url: '/logout',
+    });
+  },
 };

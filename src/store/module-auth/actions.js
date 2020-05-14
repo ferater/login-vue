@@ -19,7 +19,7 @@ export async function loginOrRegister(context, resource) {
           if (error.response.status === 422) {
             // context.dispatch('notify/notifyMe', error.response, { root: true });
             // context.dispatch('setFormErrors', error.response.data.errors);
-            // console.log('loginOrRegister, (Actions, Catch) :', error.response);
+            console.log('loginOrRegister, (Actions, Catch) :', error.response);
           }
         });
     })
@@ -30,11 +30,18 @@ export async function loginOrRegister(context, resource) {
     });
 }
 
-/**
- * Sunucudan dönen hataları forma yazdırır
- * @param {Object} context
- * @param {Array} errors
- */
-export function setFormErrors(context, errors) {
-  context.commit('setFormErrors', errors);
+export async function getAuthUser(context) {
+  await auth.getAuthUser()
+    .then((response) => {
+      context.commit('setAtuhUser', response.data);
+    });
+}
+
+
+export async function logOut() {
+  await auth.logOut()
+    .then((response) => {
+      console.log(response);
+      this.$router.push({ name: 'login' });
+    });
 }

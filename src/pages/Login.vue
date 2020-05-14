@@ -8,124 +8,160 @@
         {{ $route.from }}
         <div class="column q-pa-lg">
           <div class="row">
-            <q-form @submit="handleSubmit">
-              <q-card
-                square
-                class="shadow-24 formcard"
-                style="width:300px;height:490px;"
-                :style="isFormRegister ? 'height:570px' : ''"
-              >
-                <q-card-section class="bg-deep-purple-7">
-                  <div class="card-text">
-                    <h4 class="text-h5 text-white q-my-sm">{{ formText }}</h4>
-                  </div>
-                  <div class="q-mt-lg"></div>
-                  <div
-                    class="absolute-bottom-right q-pr-md"
-                    style="transform: translateY(50%);"
-                  >
-                    <q-btn
-                      @click.prevent="changeForm"
-                      fab
-                      color="purple-4"
-                      class="shadow-1"
+            <ValidationObserver v-slot="{ invalid }">
+              <q-form @submit="handleSubmit">
+                <q-card
+                  square
+                  class="shadow-24 formcard"
+                  style="width:300px;height:490px;"
+                  :style="isFormRegister ? 'height:570px' : ''"
+                >
+                  <q-card-section class="bg-deep-purple-7">
+                    <div class="card-text">
+                      <h4 class="text-h5 text-white q-my-sm">{{ formText }}</h4>
+                    </div>
+                    <div class="q-mt-lg"></div>
+                    <div
+                      class="absolute-bottom-right q-pr-md"
+                      style="transform: translateY(50%);"
                     >
-                      <q-icon
-                        :class="{
-                          addbtn: isFormLogin,
-                          registerbtn: !isFormLogin,
-                        }"
-                        :name="isFormLogin ? 'add' : 'close'"
-                      />
-                      <q-tooltip
-                        content-class="bg-purple-3 text-black shadow-4"
-                        :offset="[7, 7]"
-                        >{{ toolTip }}</q-tooltip
+                      <q-btn
+                        @click.prevent="changeForm"
+                        fab
+                        color="purple-4"
+                        class="shadow-1"
                       >
-                    </q-btn>
-                  </div>
-                </q-card-section>
-                <q-card-section v-if="isFormLogin" class="q-px-sm q-pt-xl lgn">
-                  <q-input
-                    square
-                    clearable
-                    bottom-slots
-                    v-for="field in loginFields"
-                    :key="field.name"
-                    v-model="formData[field.name]"
-                    :type="field.type"
-                    :label="field.label"
-                    :error="
-                      Object.entries(formErrors).length > 0 &&
-                      formData[field.name] == null
-                       ? true : false
-                    "
-                    :error-message="
-                      Object.entries(formErrors).length > 0
-                        ? formErrors[field.name][0]
-                        : ''
-                    "
-                  >
-                    <template v-slot:prepend>
-                      <q-icon :name="field.icon" />
-                    </template>
-                  </q-input>
-                </q-card-section>
-                <q-card-section
-                  v-if="isFormRegister"
-                  class="q-px-sm q-pt-xl reg"
-                >
-                  <q-input
-                    square
-                    clearable
-                    bottom-slots
-                    v-for="field in registerFields"
-                    :key="field.name"
-                    v-model="formData[field.name]"
-                    :type="field.type"
-                    :label="field.label"
-                    :error="
-                      Object.entries(formErrors).length >= 1 &&
-                      formErrors[field.name]
-                        ? true
-                        : false
-                    "
-                    :error-message="
-                      Object.entries(formErrors).length >= 1 &&
-                      formErrors[field.name]
-                        ? formErrors[field.name][0]
-                        : ''
-                    "
-                  >
-                    <template v-slot:prepend>
-                      <q-icon :name="field.icon" />
-                    </template>
-                  </q-input>
-                </q-card-section>
-                <q-card-actions class="q-px-lg">
-                  <q-toggle
+                        <q-icon
+                          :class="{
+                            addbtn: isFormLogin,
+                            registerbtn: !isFormLogin,
+                          }"
+                          :name="isFormLogin ? 'add' : 'close'"
+                        />
+                        <q-tooltip
+                          content-class="bg-purple-3 text-black shadow-4"
+                          :offset="[7, 7]"
+                          >{{ toolTip }}</q-tooltip
+                        >
+                      </q-btn>
+                    </div>
+                  </q-card-section>
+                  <q-card-section
                     v-if="isFormLogin"
-                    v-model="rememberMe"
-                    :label="rememberText"
-                    class="q-mb-md"
-                  />
-                  <q-btn
-                    type="submit"
-                    unelevated
-                    size="lg"
-                    color="purple-4"
-                    class="full-width text-white formbtn"
-                    :label="btnText"
-                  />
-                </q-card-actions>
-                <q-card-section
-                  v-if="isFormLogin"
-                  class="text-center q-pa-sm q-mt-sm"
-                >
-                  <p class="text-grey-6">{{ forgotLink }}</p>
-                </q-card-section>
-              </q-card>
-            </q-form>
+                    class="q-px-sm q-pt-xl lgn"
+                  >
+                    <div v-for="field in loginFields" :key="field.name">
+                      <ValidationProvider
+                        :rules="field.rules"
+                        :name="field.label"
+                        :bails="false"
+                        v-slot="{ errors, invalid, validated }"
+                      >
+                        <q-input
+                          square
+                          clearable
+                          clear-icon="las la-times"
+                          no-error-icon
+                          bottom-slots
+                          v-model="formData[field.name]"
+                          :type="field.type"
+                          :label="field.label"
+                          :autofocus="field.autofocus"
+                          :error="
+                            (invalid && validated) ||
+                            (Object.entries(formErrors).length >= 1 &&
+                              formErrors[field.name])
+                              ? true
+                              : false
+                          "
+                          :error-message="
+                            invalid
+                              ? errors[0]
+                              : formErrors[field.name]
+                              ? formErrors[field.name][0]
+                              : ''
+                          "
+                        >
+                          <!-- Object.entries(formErrors).length >= 1 &&
+                            formErrors[field.name] -->
+                          <template v-slot:prepend>
+                            <q-icon :name="field.icon" />
+                          </template>
+                        </q-input>
+                      </ValidationProvider>
+                    </div>
+                  </q-card-section>
+                  <q-card-section
+                    v-if="isFormRegister"
+                    class="q-px-sm q-pt-xl reg"
+                  >
+                    <div v-for="field in registerFields" :key="field.name">
+                      <ValidationProvider
+                        :rules="field.rules"
+                        :name="field.label"
+                        :bails="false"
+                        v-slot="{ errors, invalid, validated }"
+                      >
+                        <q-input
+                          square
+                          clearable
+                          clear-icon="las la-times"
+                          no-error-icon
+                          bottom-slots
+                          v-model="formData[field.name]"
+                          :type="field.type"
+                          :label="field.label"
+                          :autofocus="field.autofocus"
+                          :error="
+                            (invalid && validated) ||
+                            (Object.entries(formErrors).length >= 1 &&
+                              formErrors[field.name])
+                              ? true
+                              : false
+                          "
+                          :error-message="
+                            invalid
+                              ? errors[0]
+                              : formErrors[field.name]
+                              ? formErrors[field.name][0]
+                              : ''
+                          "
+                        >
+                          <!-- Object.entries(formErrors).length >= 1 &&
+                            formErrors[field.name] -->
+                          <template v-slot:prepend>
+                            <q-icon :name="field.icon" />
+                          </template>
+                        </q-input>
+                      </ValidationProvider>
+                    </div>
+                  </q-card-section>
+                  <q-card-actions class="q-px-lg">
+                    <q-toggle
+                      v-if="isFormLogin"
+                      v-model="rememberMe"
+                      :label="rememberText"
+                      class="q-mb-md"
+                    />
+                    <q-btn
+                      type="submit"
+                      unelevated
+                      size="lg"
+                      :disable="invalid"
+                      color="purple-4"
+                      class="full-width text-white formbtn"
+                      :label="btnText"
+                    />
+                  </q-card-actions>
+                  <q-card-section
+                    v-if="isFormLogin"
+                    class="text-center q-pa-sm q-mt-sm"
+                  >
+                    <p class="text-grey-6">{{ forgotLink }}</p>
+                  </q-card-section>
+                </q-card>
+              </q-form>
+            </ValidationObserver>
           </div>
         </div>
       </q-page>
@@ -135,9 +171,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import { ValidationObserver } from 'vee-validate';
 
 export default {
   name: 'PageLogin',
+  components: {
+    ValidationObserver,
+  },
   data() {
     return {
       url: '/login',
@@ -154,12 +194,15 @@ export default {
           type: 'email',
           label: 'E-Posta',
           icon: 'email',
+          autofocus: true,
+          rules: 'required|email',
         },
         {
           name: 'password',
           type: 'password',
           label: 'Parola',
           icon: 'lock',
+          rules: 'required',
         },
       ],
       registerFields: [
@@ -168,6 +211,7 @@ export default {
           type: 'text',
           label: 'Ad Soyad',
           icon: 'people',
+          autofocus: true,
         },
         {
           name: 'email',
@@ -216,7 +260,7 @@ export default {
     },
   },
   computed: {
-    ...mapState('auth', ['formErrors']),
+    ...mapState('validation', ['formErrors']),
     isFormLogin() {
       if (this.url === '/login') {
         return true;
