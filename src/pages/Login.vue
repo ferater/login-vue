@@ -127,8 +127,6 @@
                               : ''
                           "
                         >
-                          <!-- Object.entries(formErrors).length >= 1 &&
-                            formErrors[field.name] -->
                           <template v-slot:prepend>
                             <q-icon :name="field.icon" />
                           </template>

@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { Cookies } from 'quasar';
 
+const TokenKey = 'isLogged';
+
 export default {
   /**
    * Get Crsf cookie from Laravel
    */
-  getCookie() {
+  getXsrfCookie() {
     const token = Cookies.get('XSRF-TOKEN');
     if (token) {
       return new Promise((resolve) => {
@@ -19,5 +21,17 @@ export default {
     }).then(() => {
       console.log('getCookie, (Actions, Then) : Csrf Çerez alındı');
     });
+  },
+
+  isLogged() {
+    return Cookies.get(TokenKey) === '1';
+  },
+
+  setLogged(isLogged) {
+    return Cookies.set(TokenKey, isLogged);
+  },
+
+  removeToken() {
+    return Cookies.remove(TokenKey);
   },
 };
