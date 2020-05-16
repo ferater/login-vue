@@ -24,7 +24,7 @@ export default {
   },
 
   isLogged() {
-    return Cookies.get(TokenKey) === '1';
+    return Cookies.get(TokenKey) === 1;
   },
 
   setLogged(isLogged) {

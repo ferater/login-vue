@@ -22,6 +22,7 @@ module.exports = function (/* ctx */) {
       'interceptor-response',
       'interceptor-request',
       'vee-validate',
+      'permissions',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -61,7 +62,7 @@ module.exports = function (/* ctx */) {
       directives: [],
 
       // Quasar plugins
-      plugins: ['Cookies', 'Notify'],
+      plugins: ['Cookies', 'Notify', 'Loading'],
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
