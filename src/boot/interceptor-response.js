@@ -6,22 +6,22 @@ import axios from 'axios';
 export default async ({ store }) => {
   // something to do
   axios.interceptors.response.use(
-    (response) => {
-      console.log('interceptors (Response)', response);
-      return response;
-    },
+    (response) => response,
     (error) => {
       if (error.response) {
-        if (error.response.status === 422) {
-          store.dispatch('validation/setFormErrors', error.response.data.errors);
-          // store.dispatch('notify/notifyMe', error.response);
-          // console.log('interceptors :', error.response);
-          return Promise.reject(error);
-        }
         if (error.response.status === 401) {
           store.dispatch('auth/logOut');
           return Promise.reject(error);
         }
+        if (error.response) {
+          if (error.response.status === 422) {
+            store.dispatch('validation/setFormErrors', error.response.data.errors);
+            return Promise.reject(error);
+          }
+        }
+      } else {
+        console.log('Ağ hatası oluştu', error);
+        store.dispatch('notify/notifyMe', { data: { message: { color: 'yellow-7', text: 'Sunucu bağlantısı kurulamadı, Lütfen internet ayarlarınızı kontrol edin!' } } });
       }
       return Promise.reject(error);
     },

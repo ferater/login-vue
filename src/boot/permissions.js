@@ -10,7 +10,7 @@ const hideLoading = () => {
   }, 900);
 };
 
-export default ({ router /** store, Vue */ }) => {
+export default ({ router, store /** , Vue */ }) => {
   Loading.hide();
   router.beforeEach((to, from, next) => {
     // Now you need to add your authentication logic here, like calling an API endpoint
@@ -37,6 +37,7 @@ export default ({ router /** store, Vue */ }) => {
       hideLoading();
     } else {
       // other pages that do not have permission to access are redirected to the login page.
+      store.dispatch('auth/autoLogOut');
       next(`/login?redirect=${to.path}`);
       hideLoading();
     }

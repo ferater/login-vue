@@ -149,6 +149,7 @@
                       color="purple-4"
                       class="full-width text-white formbtn"
                       :label="btnText"
+                      :loading="isBtnLoading"
                     />
                   </q-card-actions>
                   <q-card-section
@@ -186,6 +187,9 @@ export default {
       btnText: 'İÇERİ BUYURUN !',
       forgotLink: 'Parolamı unuttum...',
       formData: {},
+      isBtnLoading: false,
+      redirect: undefined,
+      otherQuery: {},
       loginFields: [
         {
           name: 'email',
@@ -254,7 +258,32 @@ export default {
       }
     },
     handleSubmit() {
-      this.loginOrRegister({ url: this.url, data: this.formData });
+      this.isBtnLoading = true;
+      this.loginOrRegister({
+        url: this.url,
+        data: this.formData,
+      })
+        .then(() => {
+          this.$router.push({
+            path: this.redirect || '/',
+            query: this.otherQuery,
+          });
+          this.isBtnLoading = false;
+        })
+        .catch((error) => {
+          setTimeout(() => {
+            console.log('Login.vue', error);
+            this.isBtnLoading = false;
+          }, 2000);
+        });
+    },
+    getOtherQuery(query) {
+      return Object.keys(query).reduce((acc, cur) => {
+        if (cur !== 'redirect') {
+          acc[cur] = query[cur];
+        }
+        return acc;
+      }, {});
     },
   },
   computed: {
@@ -270,6 +299,18 @@ export default {
         return true;
       }
       return false;
+    },
+  },
+  watch: {
+    $route: {
+      handler(route) {
+        const { query } = route;
+        if (query) {
+          this.redirect = query.redirect;
+          this.otherQuery = this.getOtherQuery(query);
+        }
+      },
+      immediate: true,
     },
   },
 };

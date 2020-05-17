@@ -13,6 +13,9 @@ const routes = [
       {
         path: '/', name: 'home', component: () => import('pages/Index.vue'), meta: { title: 'home' },
       },
+      {
+        path: '/users', name: 'users', component: () => import('pages/users'), meta: { title: 'users' },
+      },
     ],
   },
 ];
