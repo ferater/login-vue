@@ -13,6 +13,7 @@ export async function loginOrRegister(context, resource) {
     auth.loginOrRegister(resource)
       .then((response) => {
         cookie.setLogged(1);
+        context.dispatch('getAuthUser');
         resolve(response);
       })
       .catch((error) => {

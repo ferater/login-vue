@@ -16,7 +16,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: 'PageIndex',
+  name: 'IndexPage',
   data() {
     return {
       // cookie: this.$q.cookies.get('XSRF-TOKEN'),

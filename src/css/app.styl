@@ -1,1 +1,45 @@
 // app global css in Stylus form
+
+// Tooltip
+.tooltip-info
+    background-color $indigo-9
+
+
+
+// BreadCrumbs
+.breadcrumbs-active
+    position relative
+    background-color $blue-grey-3
+    padding 5px 5px
+    box-shadow 3px 3px 6px rgba(0,0,0,0.4)
+    margin-right 25px
+    color #fff
+    &:hover
+        background-color $blue-grey-2
+        color $grey-9
+    &:before
+        content ''
+        position absolute
+        z-index 3
+        top 50%
+        margin-top -1.1em
+        border-width 1.1em 0 1.1em 1.1em
+        border-style solid 
+        border-color $blue-grey-3 $blue-grey-3 $blue-grey-3  transparent
+        left -1.1em
+    &:hover:before
+        border-color $blue-grey-2 $blue-grey-2 $blue-grey-2 transparent
+    &:after
+        content ''
+        position absolute
+        z-index 3
+        top 50%
+        margin-top -1.1em
+        border-top 1.1em solid transparent
+        border-bottom 1.1em solid transparent
+        border-left 1.1em solid $blue-grey-3
+        right -1.1em
+    &:hover:after
+        border-left-color #d6d6d6
+.breadcrumbs-exact-active
+    color $red-5

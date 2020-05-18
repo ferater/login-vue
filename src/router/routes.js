@@ -8,13 +8,20 @@ const routes = [
   },
   {
     path: '/',
+    name: 'root',
     component: () => import('layouts/MainLayout.vue'),
+    /**
+     * Rotalarda name ve meta.title aynı olmalı (breadCrumbs için)
+     */
     children: [
       {
         path: '/', name: 'home', component: () => import('pages/Index.vue'), meta: { title: 'home' },
       },
       {
         path: '/users', name: 'users', component: () => import('pages/users'), meta: { title: 'users' },
+      },
+      {
+        path: '/users/edit', name: 'userEdit', component: () => import('pages/users'), meta: { title: 'userEdit' },
       },
     ],
   },

@@ -1,30 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>
-          <q-btn icon="las la-arrow-circle-right" @click="logOut">
-            <q-tooltip content-class="bg-indigo" :offset="[10, 10]">
-              Here I am!
-            </q-tooltip>
-          </q-btn>
-        </div>
-      </q-toolbar>
-    </q-header>
-
+    <tool-bar @leftDrawerOpen="leftDrawerOpen = !leftDrawerOpen"></tool-bar>
+    <bread-crumbs></bread-crumbs>
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
@@ -50,14 +27,18 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink';
 import { mapActions } from 'vuex';
+import EssentialLink from 'components/EssentialLink';
+import ToolBar from './components/ToolBar';
+import BreadCrumbs from './components/BreadCrumbs';
 
 export default {
   name: 'MainLayout',
 
   components: {
     EssentialLink,
+    ToolBar,
+    BreadCrumbs,
   },
 
   data() {
