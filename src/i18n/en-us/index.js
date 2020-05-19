@@ -4,20 +4,23 @@
 export default {
   route: {
     root: 'Panel',
-    login: 'Sisteme Giriş',
-    home: 'Ana Sayfa',
-    users: 'Kullanıcılar',
-    userEdit: 'Kullanıcı Düzenle',
+    login: 'Login to System',
+    home: 'Home Page',
+    users: 'Users',
+    userEdit: 'Edit User',
   },
   userMenu: {
-    settings: 'Ayarlar',
-    logOut: 'Çıkış',
-    logOutTooltip: 'Çıkış Yap',
+    settings: 'Settings',
+    logOut: 'Logout',
+    logOutTooltip: 'Logout from system',
   },
   notificationMenu: {
-    notificationToolTip: 'Mesajlar / Bildirimler',
+    notificationToolTip: 'Messages / Notifications',
   },
   langSelectMenu: {
-    langSelectToolTip: 'Dilinizi seçin',
+    langSelectToolTip: 'Select Your Lang',
+  },
+  page: {
+    search: 'Search',
   },
 };

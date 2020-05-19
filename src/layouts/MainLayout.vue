@@ -1,7 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <tool-bar @leftDrawerOpen="leftDrawerOpen = !leftDrawerOpen"></tool-bar>
-    <bread-crumbs></bread-crumbs>
+    <div class="page-items">
+      <q-space />
+      <bread-crumbs></bread-crumbs>
+    </div>
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above

@@ -1,7 +1,7 @@
 <!-- NotificationMenu -->
 <template>
   <div class="q-pa-sm">
-    <q-btn round dense flat color="white" icon="lar la-comment-alt">
+    <q-btn round dense flat icon="lar la-comment-alt">
       <q-badge color="red" text-color="white" floating>
         2
       </q-badge>

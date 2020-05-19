@@ -1,5 +1,5 @@
 <template>
-  <div class="q-mt-md">
+  <div class="breadcrumbs">
     <q-breadcrumbs
       gutter="xs"
       separator=""
