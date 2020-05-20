@@ -13,11 +13,13 @@ export default async ({ store }) => {
           store.dispatch('auth/logOut');
           return Promise.reject(error);
         }
-        if (error.response) {
-          if (error.response.status === 422) {
-            store.dispatch('validation/setFormErrors', error.response.data.errors);
-            return Promise.reject(error);
-          }
+        if (error.response.status === 403) {
+          store.dispatch('notify/notifyMe', error.response.data);
+          return Promise.reject(error);
+        }
+        if (error.response.status === 422) {
+          store.dispatch('validation/setFormErrors', error.response.data.errors);
+          return Promise.reject(error);
         }
       } else {
         console.log('Ağ hatası oluştu', error);

@@ -18,7 +18,7 @@ export default {
     notificationToolTip: 'Mesajlar / Bildirimler',
   },
   langSelectMenu: {
-    langSelectToolTip: 'Dilinizi seçin',
+    langSelectToolTip: 'Dil seçin',
   },
   page: {
     search: 'Ara',

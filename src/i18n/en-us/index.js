@@ -18,7 +18,7 @@ export default {
     notificationToolTip: 'Messages / Notifications',
   },
   langSelectMenu: {
-    langSelectToolTip: 'Select Your Lang',
+    langSelectToolTip: 'Select Language',
   },
   page: {
     search: 'Search',
