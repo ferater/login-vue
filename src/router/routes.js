@@ -1,8 +1,11 @@
-
+/**
+ * Rotada hidden:true ise o rota menude gizlenir
+ */
 const routes = [
   {
     path: '/login',
     name: 'login',
+    hidden: true,
     component: () => import('pages/Login.vue'),
     meta: { title: 'login' },
   },
@@ -15,13 +18,13 @@ const routes = [
      */
     children: [
       {
-        path: '/', name: 'home', component: () => import('pages/Index.vue'), meta: { title: 'home' },
+        path: '/', name: 'home', hidden: false, component: () => import('pages/Index.vue'), meta: { title: 'home', icon: 'las la-home' },
       },
       {
-        path: '/users', name: 'users', component: () => import('pages/users'), meta: { title: 'users' },
+        path: '/users', name: 'users', component: () => import('pages/users'), meta: { title: 'users', icon: 'las la-user-alt', permissions: ['view-users'] },
       },
       {
-        path: '/users/edit', name: 'userEdit', component: () => import('pages/users'), meta: { title: 'userEdit' },
+        path: '/users/edit', name: 'userEdit', component: () => import('pages/users'), meta: { title: 'userEdit', icon: 'las la-user-cog' },
       },
     ],
   },

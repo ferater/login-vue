@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <q-page padding>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card card-default">
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>

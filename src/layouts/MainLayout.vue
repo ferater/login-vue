@@ -5,7 +5,7 @@
       <q-space />
       <bread-crumbs></bread-crumbs>
     </div>
-    <q-drawer
+    <!-- <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -13,25 +13,31 @@
     >
       <q-list>
         <q-item-label header class="text-grey-8">
-          Essential Links
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
-          :key="link.title"
+          :key="link.name"
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
-    <q-page-container>
+    <q-page-container class="page-container">
       <router-view />
+      <!--  Sidenav    -->
+      <div class="sidenav" v-if="$q.screen.gt.sm">
+        <ul class="list-unstyled">
+          <side-bar v-for="link in essentialLinks" :key="link.name" v-bind="link"/>
+        </ul>
+      </div>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import EssentialLink from 'components/EssentialLink';
+import SideBar from 'components/SideBar';
+import routes from '../router/routes';
 import ToolBar from './components/ToolBar';
 import BreadCrumbs from './components/BreadCrumbs';
 
@@ -39,7 +45,7 @@ export default {
   name: 'MainLayout',
 
   components: {
-    EssentialLink,
+    SideBar,
     ToolBar,
     BreadCrumbs,
   },
@@ -47,14 +53,7 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev',
-        },
-      ],
+      essentialLinks: routes[1].children,
     };
   },
   methods: {

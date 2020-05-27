@@ -1,4 +1,3 @@
-/*
-export function someGetter (state) {
-}
-*/
+// export function roles(state) {
+// return state.authUser.roles;
+// }

@@ -36,10 +36,81 @@ $bread-brdr-aftr = $blue-grey-3
 **/
 
 
-
+/**
+*
+* Toolbar
+*
+**/
 .q-header
     background-color #ffffff
     color $blue-grey-10
+/**
+*
+* // Toolbar //
+*
+**/
+
+@media (min-width: 1024px)
+    .page-container
+        padding-left 100px
+
+/* ** Sidenav */
+.sidenav
+  position fixed
+  top 110px
+  left 0
+  width 105px
+  height 705px
+  border-radius 0 3px 3px 0
+  padding 10px 0
+  background-color #ffffff
+  box-shadow 0 8px 10px -10px rgba(0, 0, 0, .28), 0 4px 20px 0 rgba(0, 0, 0, .12), 0 7px 8px -5px rgba(76, 175, 80, .2)
+  transition all .1s ease
+
+  .list-unstyled
+    list-style none
+    margin-top 0
+
+    li
+      position relative
+      display list-item
+      transform translateX(-40%)
+      text-align left
+      width 105px
+
+      &.active a
+        color $primary
+
+        &:before
+          content ''
+          position absolute
+          left 2px
+          width 6px
+          height 85%
+          border-radius 3px
+          background-color $primary
+
+      &:hover a
+        color $primary
+
+      a
+        height 105px
+        text-decoration none
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        font-family Nunito, sans-serif
+        font-size 13px
+        font-style normal
+        font-weight 400
+        border-bottom 1px solid #f3f3f3
+        color #3a3a3a
+
+        i
+          font-size 32px
+          line-height 42px
+
 /**
 *
 * Page-Items

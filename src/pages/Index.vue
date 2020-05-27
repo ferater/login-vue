@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-page">
+  <q-page padding>
     <!-- {{ cookie }}  -->
     <q-btn
       color="white"

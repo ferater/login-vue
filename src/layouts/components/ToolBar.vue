@@ -6,7 +6,7 @@
           flat
           dense
           round
-          icon="lab la-ubuntu"
+          icon="las la-bars"
           aria-label="Menu"
           @click="$emit('leftDrawerOpen')"
         />

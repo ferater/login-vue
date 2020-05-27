@@ -25,6 +25,9 @@ export async function loginOrRegister(context, resource) {
 export async function getAuthUser(context) {
   await auth.getAuthUser().then((response) => {
     context.commit('setAtuhUser', response.data);
+    context.commit('setRoles', response.data.roles);
+    context.commit('setPermissions', response.data.permissions);
+    console.log('getAuthUser (Actions, Then):', response.data);
   });
 }
 
