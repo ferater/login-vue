@@ -23,6 +23,7 @@ module.exports = function (/* ctx */) {
       'interceptor-request',
       'vee-validate',
       'permissions',
+      'can',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

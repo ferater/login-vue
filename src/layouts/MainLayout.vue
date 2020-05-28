@@ -24,20 +24,14 @@
 
     <q-page-container class="page-container">
       <router-view />
-      <!--  Sidenav    -->
-      <div class="sidenav" v-if="$q.screen.gt.sm">
-        <ul class="list-unstyled">
-          <side-bar v-for="link in essentialLinks" :key="link.name" v-bind="link"/>
-        </ul>
-      </div>
+     <side-bar />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import SideBar from 'components/SideBar';
-import routes from '../router/routes';
+import SideBar from './components/sidebar';
 import ToolBar from './components/ToolBar';
 import BreadCrumbs from './components/BreadCrumbs';
 
@@ -53,7 +47,6 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: routes[1].children,
     };
   },
   methods: {

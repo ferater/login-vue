@@ -20,7 +20,7 @@ export default {
   langSelectMenu: {
     langSelectToolTip: 'Dil seçin',
   },
-  page: {
+  layout: {
     search: 'Ara',
   },
 };

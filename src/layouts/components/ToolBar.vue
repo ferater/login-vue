@@ -17,7 +17,7 @@
           class="q-ml-lg toolbar-search"
           bg-color="white"
           v-model="search"
-          :placeholder="$t('page.search')"
+          :placeholder="$t('layout.search')"
         >
           <template slot="prepend">
             <q-icon name="search" v-if="search === ''" />

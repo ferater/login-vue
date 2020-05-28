@@ -19,6 +19,7 @@
 * Değişken renkler
 *
 **/
+
 // BreadCrumbs
 $bread-bg  = linear-gradient(to right, $blue-grey-2 0%, $blue-grey-3 100%)
 $bread-bg-hv   = linear-gradient(to right, $blue-grey-3 0%, $blue-grey-4 100%);
@@ -36,23 +37,20 @@ $bread-brdr-aftr = $blue-grey-3
 **/
 
 
-/**
-*
-* Toolbar
-*
-**/
+
+// * Toolbar
+
 .q-header
     background-color #ffffff
     color $blue-grey-10
-/**
-*
-* // Toolbar //
-*
-**/
+
+
+// * Page Container
 
 @media (min-width: 1024px)
     .page-container
         padding-left 100px
+
 
 /* ** Sidenav */
 .sidenav
@@ -111,11 +109,9 @@ $bread-brdr-aftr = $blue-grey-3
           font-size 32px
           line-height 42px
 
-/**
-*
-* Page-Items
-*
-**/
+
+// * Page-Items
+
 .page-items
     position relative
     margin-top 15px
@@ -124,34 +120,17 @@ $bread-brdr-aftr = $blue-grey-3
     display flex
     align-items center
 
-/**
-*
-* // Page-Items //
-*
-**/
+// * search (in toolbar)
 
-/**
-*
-* search (in toolbar)
-*
-**/
 .toolbar-search
     width 150px
     transition width .5s ease
     &:focus-within
         width 250px
-/**
-*
-* // Serach (in page) //
-*
-**/
 
 
-/**
-*
-* BreadCrumbs
-*
-**/
+// * BreadCrumbs
+
 .breadcrumbs-active
     position relative
     background-image $bread-bg
@@ -188,23 +167,11 @@ $bread-brdr-aftr = $blue-grey-3
 // .breadcrumbs-exact-active
 //     background-color $orange-7
 
-/**
-*
-* // BreadCrumbs //
-*
-**/
 
-/**
-*
-* Tooltip 
-*
-**/
+
+// * Tooltip 
+
 .tooltip-info
     background-color $indigo-5
     color #ffffff
 
-/**
-*
-* // Tooltip //
-*
-**/

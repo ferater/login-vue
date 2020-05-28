@@ -21,10 +21,10 @@ const routes = [
         path: '/', name: 'home', hidden: false, component: () => import('pages/Index.vue'), meta: { title: 'home', icon: 'las la-home' },
       },
       {
-        path: '/users', name: 'users', component: () => import('pages/users'), meta: { title: 'users', icon: 'las la-user-alt', permissions: ['view-users'] },
+        path: '/users', name: 'users', hidden: false, component: () => import('pages/users'), meta: { title: 'users', icon: 'las la-user-alt', permissions: ['view-users'] },
       },
       {
-        path: '/users/edit', name: 'userEdit', component: () => import('pages/users'), meta: { title: 'userEdit', icon: 'las la-user-cog' },
+        path: '/users/edit', name: 'userEdit', hidden: false, component: () => import('pages/users'), meta: { title: 'userEdit', icon: 'las la-user-cog' },
       },
     ],
   },

@@ -20,7 +20,7 @@ export default {
   langSelectMenu: {
     langSelectToolTip: 'Select Language',
   },
-  page: {
+  layout: {
     search: 'Search',
   },
 };

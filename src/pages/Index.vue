@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <!-- {{ cookie }}  -->
+    {{ $can() }}
     <q-btn
       color="white"
       text-color="black"
@@ -18,9 +18,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
   name: 'IndexPage',
   data() {
-    return {
-      // cookie: this.$q.cookies.get('XSRF-TOKEN'),
-    };
+    return {};
   },
   computed: {
     ...mapState('auth', ['authUser']),

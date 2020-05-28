@@ -1,6 +1,6 @@
 import { Loading, QSpinnerGears } from 'quasar';
 import cookie from '../api-services/cookie';
-import getPageTitle from '../utils/getpagetitle';
+import utils from '../utils';
 
 const whiteList = ['/login'];
 
@@ -10,6 +10,17 @@ const hideLoading = () => {
   }, 900);
 };
 
+const hasPermission = (route, permissions) => {
+  if (route.meta.permissions) {
+    const a = route.meta.permissions.filter((x) => permissions.includes(x));
+    if (a.length >= 1) {
+      return true;
+    }
+    return false;
+  }
+  return true;
+};
+
 export default ({ router, store /** , Vue */ }) => {
   Loading.hide();
   router.beforeEach((to, from, next) => {
@@ -17,14 +28,12 @@ export default ({ router, store /** , Vue */ }) => {
     // start progress bar
     Loading.show({ spinner: QSpinnerGears });
     // set page title
-    document.title = getPageTitle(to.meta.title);
-
+    document.title = utils.getPageTitle(to.meta.title);
     // determine whether the user has logged in
     const isUserLogged = cookie.isLogged();
-
+    const { permissions } = store.state.auth;
     if (isUserLogged) {
-      if (to.name === 'login') {
-        console.log('Zaten içerdesin!');
+      if (to.name === 'login' || !hasPermission(to, permissions)) {
         next({ name: 'home' });
         hideLoading();
       } else {

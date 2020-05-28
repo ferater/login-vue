@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 // import example from './module-example'
+import app from './module-app';
 import auth from './module-auth';
 import notify from './module-notify';
 import validation from './module-validation';
@@ -21,6 +22,7 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example,
+      app,
       auth,
       notify,
       validation,
