@@ -6,11 +6,11 @@
     <div class="sidenav-bottom">
       <q-btn flat icon="las la-cog" size="10px" @click="options = !options" />
     </div>
-    <div class="options-container">
+    <!-- <div class="options-container">
       <div class="options" :class="{ open: options }">
       sd
     </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

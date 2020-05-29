@@ -46,6 +46,8 @@ export async function logOut(context) {
   await auth.logOut().then((response) => {
     console.log(response);
     context.commit('setAtuhUser', {});
+    context.commit('setRoles', []);
+    context.commit('setPermissions', []);
     cookie.removeToken('isLogged');
     this.$router.push({ name: 'login' });
   });

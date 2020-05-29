@@ -3,14 +3,14 @@ export function someMutation (state) {
 }
 */
 
-export function setAtuhUser(state, payload) {
-  state.authUser = payload;
+export function setAtuhUser(state, authUser) {
+  state.authUser = authUser;
 }
 
-export function setRoles(state, payload) {
-  state.roles = payload;
+export function setRoles(state, roles) {
+  state.roles = roles;
 }
 
-export function setPermissions(state, payload) {
-  state.permissions = payload;
+export function setPermissions(state, permissions) {
+  state.permissions = permissions;
 }
