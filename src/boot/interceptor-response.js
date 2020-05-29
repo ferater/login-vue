@@ -6,7 +6,10 @@ import axios from 'axios';
 export default async ({ store }) => {
   // something to do
   axios.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      store.dispatch('app/setIsBtnLoading', false);
+      return response;
+    },
     (error) => {
       if (error.response) {
         if (error.response.status === 401) {
@@ -25,6 +28,7 @@ export default async ({ store }) => {
         console.log('Ağ hatası oluştu', error);
         store.dispatch('notify/notifyMe', { data: { message: { color: 'yellow-7', text: 'Sunucu bağlantısı kurulamadı, Lütfen internet ayarlarınızı kontrol edin!' } } });
       }
+      store.dispatch('app/setIsBtnLoading', false);
       return Promise.reject(error);
     },
   );

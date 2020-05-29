@@ -3,7 +3,6 @@
 
 export default {
   route: {
-    root: 'Panel',
     login: 'Sisteme Giriş',
     home: 'Ana Sayfa',
     users: 'Kullanıcılar',
@@ -22,5 +21,9 @@ export default {
   },
   layout: {
     search: 'Ara',
+  },
+
+  pg: {
+    getUser: 'Kullanıcı Çek',
   },
 };

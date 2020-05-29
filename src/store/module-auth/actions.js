@@ -35,6 +35,8 @@ export async function autoLogOut(context) {
   await auth.logOut().then((response) => {
     console.log('autoLogOut: ', response);
     context.commit('setAtuhUser', {});
+    context.commit('setRoles', []);
+    context.commit('setPermissions', []);
     cookie.removeToken('isLogged');
   });
 }

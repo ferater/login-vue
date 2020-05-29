@@ -55,15 +55,16 @@ $bread-brdr-aftr = $blue-grey-3
 /* ** Sidenav */
 .sidenav
   position fixed
-  top 110px
+  top 90px
   left 0
   width 105px
-  height 705px
+  height 530px
   border-radius 0 3px 3px 0
   padding 10px 0
   background-color #ffffff
-  box-shadow 0 8px 10px -10px rgba(0, 0, 0, .28), 0 4px 20px 0 rgba(0, 0, 0, .12), 0 7px 8px -5px rgba(76, 175, 80, .2)
+  box-shadow 1px 1px 4px rgba(0,0,0,.4)
   transition all .1s ease
+  z-index: 99
 
   .list-unstyled
     list-style none
@@ -102,12 +103,42 @@ $bread-brdr-aftr = $blue-grey-3
         font-size 13px
         font-style normal
         font-weight 400
-        border-bottom 1px solid #f3f3f3
+        border-bottom 1px solid rgba(0,0,0,.13)
         color #3a3a3a
 
         i
           font-size 32px
           line-height 42px
+          
+  .sidenav-bottom
+    position absolute
+    bottom 0
+    width: 100%
+    display flex
+    justify-content center
+
+.options-container
+    background-color red
+    top 0
+    right 0
+    bottom 0 
+    left 0
+    .options
+        background-color orange
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        width 105px
+        transition all .4s ease
+        z-index -1
+        &.open
+            background-color orange
+            width 200px
+            left 105px
+            z-index -1
+
+       
 
 
 // * Page-Items

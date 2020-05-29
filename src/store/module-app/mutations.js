@@ -1,4 +1,4 @@
 
-// export function setRoutes(state, routes) {
-//   state.routes = routes;
-// }
+export function setIsBtnLoading(state, isBtnLoading) {
+  state.isBtnLoading = isBtnLoading;
+}

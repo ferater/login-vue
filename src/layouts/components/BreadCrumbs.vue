@@ -7,13 +7,14 @@
       active-color="primary"
     >
       <q-breadcrumbs-el
+      v-if="$route.path !== '/'"
         :label="$t(`route.home`)"
         :to="{ name: 'home' }"
         active-class="breadcrumbs-active"
         exact-active-class="breadcrumbs-exact-active"
       />
       <q-breadcrumbs-el
-        :label="route.name ? $t(`route.${route.name}`) : ''"
+        :label="route.name ? $t(`route.${route.name}`) : $t('route.home')"
         v-for="route in crumbs"
         :key="route.name"
         :to="{ name: route.name }"

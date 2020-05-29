@@ -3,6 +3,14 @@
     <ul class="list-unstyled">
       <side-bar-item v-for="link in routes" :key="link.name" v-bind="link" />
     </ul>
+    <div class="sidenav-bottom">
+      <q-btn flat icon="las la-cog" size="10px" @click="options = !options" />
+    </div>
+    <div class="options-container">
+      <div class="options" :class="{ open: options }">
+      sd
+    </div>
+    </div>
   </div>
 </template>
 
@@ -16,10 +24,13 @@ export default {
     SideBarItem,
   },
   data() {
-    return {};
+    return {
+      options: false,
+    };
   },
   computed: {
     ...mapState('app', ['routes']),
   },
+  methods: {},
 };
 </script>

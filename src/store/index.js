@@ -7,6 +7,9 @@ import auth from './module-auth';
 import notify from './module-notify';
 import validation from './module-validation';
 
+// eslint-disable-next-line import/no-mutable-exports
+let store = null;
+
 Vue.use(Vuex);
 
 /*
@@ -33,5 +36,9 @@ export default function (/* { ssrContext } */) {
     strict: process.env.DEV,
   });
 
+  store = Store;
+
   return Store;
 }
+
+export { store };

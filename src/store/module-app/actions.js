@@ -1,3 +1,3 @@
-// export function setRoutes(context, routes) {
-//   context.commit('setRoutes', routes);
-// }
+export function setIsBtnLoading(context, isBtnLoading) {
+  context.commit('setIsBtnLoading', isBtnLoading);
+}

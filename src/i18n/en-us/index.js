@@ -3,7 +3,6 @@
 
 export default {
   route: {
-    root: 'Panel',
     login: 'Login to System',
     home: 'Home Page',
     users: 'Users',
